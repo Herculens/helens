@@ -1,6 +1,6 @@
-# Copyright (c) 2023, herculens developers and contributors
+# Copyright (c) 2024, herculens developers and contributors
 
-__author__ = 'austinpeel'
+__author__ = 'austinpeel', 'aymgal'
 
 
 import numpy as np
