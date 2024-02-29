@@ -1,8 +1,8 @@
-"""PACKAGE INFO
+# Copyright (c) 2023, herculens developers and contributors
+# Copyright (c) 2024, slax developers and contributors
 
-This module provides some basic information about the package.
-
-"""
+# Alias for shorter import
+from helens.solver import LensEquationSolver
 
 # Set the package release version
 version_info = (0, 0, 1)

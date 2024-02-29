@@ -1,10 +1,12 @@
-# Copyright (c) 2024, herculens developers and contributors
+# Copyright (c) 2023, herculens developers and contributors
+# Copyright (c) 2024, helens developers and contributors
 
 __author__ = 'austinpeel', 'aymgal'
 
 
-import numpy as np
 import jax.numpy as jnp
+from jax.config import config
+config.update("jax_enable_x64", True)
 
 
 class LensEquationSolver(object):
@@ -33,9 +35,13 @@ class LensEquationSolver(object):
 
     def __init__(self, grid_x, grid_y, ray_shooting_func):
         self._xcoords, self._ycoords = grid_x.flatten(), grid_y.flatten()
-        self._pix_scl = np.abs(grid_x[0, 0] - grid_x[0, 1])
+        self._pix_scl = abs(grid_x[0, 0] - grid_x[0, 1])
         self._num_pix = grid_x.size
         self._ray_shooting_func = ray_shooting_func
+
+    def estimate_accuracy(self, niter, scale_factor, nsubdivisions):
+        """Gives an estimate of the accuracy of predicted image positions"""
+        return self._pix_scl * (scale_factor / 4**nsubdivisions)**(niter / 2.)
 
     def solve(self, beta, lens_params, 
               nsolutions=5, niter=5, scale_factor=2, nsubdivisions=1):
@@ -96,10 +102,6 @@ class LensEquationSolver(object):
         src_selection = self._source_plane_triangles(img_selection, lens_params)
 
         return self._centroids(img_selection), self._centroids(src_selection)
-
-    def estimate_accuracy(self, grid_pixel_width, niter, scale_factor, nsubdivisions):
-        """Gives an estimate of the accuracy of predicted image positions"""
-        return grid_pixel_width * (scale_factor / 4**nsubdivisions)**(niter / 2.)
 
     def shoot_rays(self, x, y, lens_params):
         return self._ray_shooting_func(x, y, lens_params)
@@ -191,7 +193,7 @@ class LensEquationSolver(object):
             Factor by which each triangle's area is scaled.
 
         """
-        c = self.centroids(triangles)
+        c = self._centroids(triangles)
         c = jnp.repeat(jnp.expand_dims(c, 1), repeats=3, axis=1)
         return c + scale_factor**0.5 * (triangles - c)
 

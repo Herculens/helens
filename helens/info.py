@@ -1,8 +1,8 @@
-# Copyright (c) 2023, herculens developers and contributors
-# Copyright (c) 2024, slax developers and contributors
+"""PACKAGE INFO
 
-# Alias for shorter import
-from slax.solver import LensEquationSolver
+This module provides some basic information about the package.
+
+"""
 
 # Set the package release version
 version_info = (0, 0, 1)
@@ -12,7 +12,7 @@ __version__ = '.'.join(str(c) for c in version_info)
 __author__ = 'Austin Peel, Aymeric Galan'
 __email__ = 'aymeric.galan@gmail.com'
 __year__ = '2024'
-__url__ = 'https://github.com/Herculens/slax'
+__url__ = 'https://github.com/Herculens/helens'
 __description__ = 'Lens equation solver for strong lensing applications, written in JAX.'
 __python__ = '>=3.7'
 __requires__ = [

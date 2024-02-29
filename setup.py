@@ -1,7 +1,7 @@
 import setuptools
 import os
 
-__name__ = 'slax'
+__name__ = 'helens'
 
 release_info = {}
 infopath = os.path.abspath(os.path.join(os.path.dirname(__file__),
