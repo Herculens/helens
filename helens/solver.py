@@ -11,8 +11,8 @@ config.update("jax_enable_x64", True)
 
 class LensEquationSolver(object):
     """Solver for the multiple lensed image positions of a source point.
-    The coordinates grid are assumed to be aligned with the image plane axis
-    (i.e., coordinates should define a rotated frame).
+    The coordinates grid is assumed to be Cartesian, i.e. aligned with the 
+    image axes and equally spaced in along both directions.
 
     Parameters
     ----------
