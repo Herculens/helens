@@ -6,7 +6,7 @@
 
 Lens equation solver for strong lensing applications, written in JAX (automatic differentiation, JIT-compilation, GPU support). Originally developped by [@austinpeel](https://github.com/austinpeel) as part of the lens modeling code [`Herculens`](https://github.com/Herculens/herculens).
 
-If you make use `helens`, please cite
+If you make use of `helens`, please cite our Zenodo entry:
 ```
 @software{GalanPeel2024_zenodo,
   author       = {Galan, Aymeric and
