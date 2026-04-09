@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "helens"
+version = "0.0.1"
+description = "Lens equation solver for strong lensing applications, written in JAX."
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "Austin Peel"},
+    {name = "Aymeric Galan", email = "aymeric.galan@gmail.com"},
+]
+keywords = ["jax", "lensing", "gravitational lensing", "lens equation"]
+requires-python = ">=3.7"
+dependencies = [
+    "jax>=0.3.14",
+    "jaxlib>=0.3.14",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-cov",
+    "pytest-pep8",
+]
+
+[project.urls]
+Homepage = "https://github.com/Herculens/helens"
+Repository = "https://github.com/Herculens/helens"
+
+[tool.setuptools.packages.find]
+include = ["helens*"]
